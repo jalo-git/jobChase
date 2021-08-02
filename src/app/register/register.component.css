@@ -1,0 +1,15 @@
+.title{
+    text-align: center;
+    color: rgb(109, 5, 109);
+    }
+    .card{
+        text-align: center;
+        padding-top: 25px;
+        margin: 0 auto;
+        float: none;
+        margin-bottom: 10px;
+    } 
+    .account{
+        padding-left: 26%;
+        padding-right: 26%;
+    }
