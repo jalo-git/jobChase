@@ -4,5 +4,10 @@
     background-image: url('/assets/images/mall.jpg');
     background-size: cover;
     background-repeat: no-repeat; 
-   
+  
+}
+body{
+    /* font-family: "Graphik Light","Arial",Sans-Serif !important; */
+    /* font-family: 'Roboto', sans-serif; */
+    font-family: Poppins,Helvetica,sans-serif;
 }

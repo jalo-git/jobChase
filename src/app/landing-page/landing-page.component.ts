@@ -11,6 +11,7 @@ export class LandingPageComponent implements OnInit {
 
   ngOnInit() {
     document.body.classList.add('bg-img');
+    
 }
 
 }
