@@ -48,9 +48,11 @@
     color:white;
   }
   #users{
-    margin-left:1200px ;
-      font-size: 30px;
-      color:white;
-      padding:10px;
+    color:white;
+    font-size: 25px;
 
+  }
+  #logout{
+    margin-left:93%;
+    color: white;
   }

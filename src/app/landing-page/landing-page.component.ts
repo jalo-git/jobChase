@@ -12,12 +12,11 @@ export class LandingPageComponent implements OnInit {
 
   constructor( private router: Router,) { }
 
+
   ngOnInit() {
-    document.body.classList.add('bg-img');
+    // document.body.classList.add('bg-img');
     
 }
+ 
 
-btnClick(){
-  this.router.navigate(['/login']);
-}
 }

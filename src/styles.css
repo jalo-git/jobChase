@@ -1,11 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
-.bg-img
+/* .bg-img
 {
-    background-image: url('/assets/images/mall.jpg');
+    background-image: url('./assets/images/mall.jpg');
     background-size: cover;
     background-repeat: no-repeat; 
   
-}
+} */
 body{
     /* font-family: "Graphik Light","Arial",Sans-Serif !important; */
     /* font-family: 'Roboto', sans-serif; */

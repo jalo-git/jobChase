@@ -1,38 +1,62 @@
-<div class=" mt-5 card" style="width: 35rem;border-right: skyblue solid 4px;border-left: violet solid 4px;">
-    <div class="card-body " >
-<h1 class="title">Register</h1> 
-<p>Create your own account using the following fields</p>
-<br>
-<form>
-    <div class="row">
-      <div class="col">
-        <input type="text" id="fname" name="fname" class="form-control"  value="First Name" > 
-      </div>
-      <div class="col">
-        <input type="text" id="lname" name="lname" class="form-control" value="Last Name">
-      </div> 
-    </div>
-    <div class="row mt-4">
+<div class="card" style="width: 35rem;border-right: skyblue solid 4px;border-left: violet solid 4px;">
+  <div class="card-body ">
+    <h1 class="title">Register</h1>
+    <p>Create your own account using the following fields</p>
+    <br>
+    <form (ngSubmit)="user.valid && onSubmit()" [formGroup]="user" class="register-form" id="register-form">
+      <div class="row">
         <div class="col">
-            <input type="text" id="address" name="address" class="form-control" value="Address">
+          <input type="text" id="fname" name="fname" class="form-control"formControlName="firstname" [ngClass]="{'is-invalid' : user.get('firstname').touched && user.get('firstname').invalid}" placeholder="First Name">
+          <div *ngIf="user.get('firstname').touched && user.get('firstname').invalid" class="invalid-feedback">
+            <p class="validate" *ngIf="user.get('firstname').errors.required">*First Name is required</p>
+            <p class="validate"  *ngIf="user.get('firstname').errors.minlength">*First Name must atleast 2 characters</p>
+          </div>
         </div>
         <div class="col">
-            <input type="text" id="email" name="email" class="form-control" value="Email Address">
-        </div> 
+          <input type="text" id="lname" name="lname" class="form-control" formControlName="lastname" [ngClass]="{'is-invalid' : user.get('lastname').touched && user.get('lastname').invalid}" placeholder="Last Name">
+          <div *ngIf="user.get('lastname').touched && user.get('lastname').invalid" class="invalid-feedback">
+            <p class="validate" *ngIf="user.get('lastname').errors.required">Last Name is required</p>
+            <p class="validate" *ngIf="user.get('lastname').errors.minlength">Last Name must be atleast 2 characters</p>
+          </div>
+        </div>
       </div>
       <div class="row mt-4">
         <div class="col">
-            <input type="text" id="password" name="password" class="form-control" value="Password">
+          <input type="text" id="address" name="address" class="form-control" formControlName="address" [ngClass]="{'is-invalid' : user.get ('address').touched && user.get('address').invalid}" placeholder="Address">
+          <div *ngIf="user.get('address').touched && user.get('address').invalid" class="invalid-feedback">
+            <p class="validate" *ngIf="user.get('lastname').errors.required">Address is required</p>
+          </div>
         </div>
         <div class="col">
-            <input type="text" id="confirm" name="confirm" class="form-control" value="Confirm Password">
-        </div> 
+          <input type="text" id="email" name="email" class="form-control" formControlName="emailAddress" [ngClass]="{'is-invalid' : user.get ('emailAddress').touched && user.get('emailAddress').invalid}" placeholder="Email Address">
+          <div *ngIf="user.get('emailAddress').touched && user.get('emailAddress').invalid" class="invalid-feedback">
+            <p class="validate" *ngIf="user.get('emailAddress').errors.required">Email Address is required</p>
+          </div>
+        </div>
       </div>
-      <button class="account btn mt-4 w-100" style="background-image: linear-gradient(to right, violet , skyblue);color: white;"> Create Account</button>
-<br>
-</form>
+      <div class="row mt-4">
+        <div class="col">
+          <input type="password" id="password" name="password" class="form-control" formControlName="password" [ngClass]="{'is-invalid' : user.get('password').touched && user.get('password').invalid}" placeholder="Password">
+        <div *ngIf="user.get('password').touched && user.get('password').invalid" class="invalid-feedback">
+          <div class="validate"  *ngIf="user.get('password').errors.required"> Password is required</div>
+          <div class="validate"  *ngIf="user.get('password').errors.minlength"> Password must be atleat 8 characters</div>
+        </div>
+        </div>
+        <div class="col">
+          <input type="password" id="confirm" name="confirm" class="form-control" formControlName="confirmpassword" [ngClass]="{'is-invalid' : user.get('confirmpassword').touched && user.get('confirmpassword').invalid  && user.get('confirmpassword').errors}" placeholder="Confirm Password">
+        <div *ngIf="user.get('confirmpassword').touched && user.get('confirmpassword').invalid && user.get('confirmpassword').errors"
+          class="invalid-feedback">
+          <div class="validate" *ngIf="user.get('confirmpassword').errors.required"> Password is required</div>
+          <div class="validate" *ngIf="user.get('confirmpassword').errors.mustMatch"> Password doesn't match</div>
+        </div>
+        </div>
+      </div>
+      <button class="account btn mt-4 w-100"
+        style="background-image: linear-gradient(to right, violet , skyblue);color: white;"> Create Account</button>
+      <br>
+    </form>
 
 
-<p class="offset-4">Aready have an account? Login</p>
-</div>
+    <p class="offset-4">Aready have an account? <a href routerLink="/login">Login</a></p>
+  </div>
 </div>
