@@ -1,31 +1,40 @@
- 
- <div class="row" >
-    <div class="col-md-4 offset-md-4" style="margin-top:150px;" >
-        <div class="card">
-            <div class="card-body" style="padding:30px">
-                <h1 style="text-align: center;color:rgb(109, 5, 109);">Welcome Back</h1>
-                <p style="text-align: center;">Log in to your account using email and password</p>
-                <form ><br>
-                    <div class="mb-3">
-                        <!-- <label for="exampleInputEmail1" class="form-label">Email address</label> -->
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" >
-                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                    </div><br>
-                    <div class="mb-3">
-                        <!-- <label for="exampleInputPassword1" class="form-label">Password</label> -->
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                    </div><br>
-                   
-                   
-                    <div class="d-grid gap-2">
-                        <button class="btn btn-outline-secondary" id="button" type="submit">LOGIN</button>
-                        <p style="text-align: right;">Have an account?<a href routerLink="/register">Register</a></p>
-                      
-                      </div>
-                </form>
-        
-            </div>
-          </div>
-       
+<div class="row">
+    <div class="card">
+        <div class="card-body">
+            <h1 style="text-align: center;color:rgb(109, 5, 109);">Welcome Back</h1>
+            <p style="text-align: center;">Log in to your account using email and password</p>
+            <form (ngSubmit)="user.valid && onSubmit()" [formGroup]="user" class="login-form" id="login-form"><br>
+                <div class="mb-2">
+                    <!-- <label for="exampleInputEmail1" class="form-label">Email address</label> -->
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        formControlName="emailAddress"
+                        [ngClass]="{'is-invalid' : user.get ('emailAddress').touched && user.get('emailAddress').invalid}"
+                        placeholder="Enter email">
+                    <div *ngIf="user.get('emailAddress').touched && user.get('emailAddress').invalid"
+                        class="invalid-feedback">
+                        <p class="validate" *ngIf="user.get('emailAddress').errors.required">Email Address is
+                            required</p>
+                    </div>
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div><br>
+                <div class="mb-2">
+                    <!-- <label for="exampleInputPassword1" class="form-label">Password</label> -->
+                    <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password"
+                        [ngClass]="{'is-invalid' : user.get('password').touched && user.get('password').invalid}"
+                        placeholder="Password">
+                    <div *ngIf="user.get('password').touched && user.get('password').invalid" class="invalid-feedback">
+                        <div class="validate" *ngIf="user.get('password').errors.required"> Password is required
+                        </div>
+                    </div>
+                </div><br>
+                <div class="d-grid gap-2">
+                    <button class="account btn mt-4 w-100"
+                        style="background-image: linear-gradient(to right, violet , skyblue);color: white;"
+                        type="submit">LOGIN</button>
+                    <p class="offset-4" style="float: right;">Have an account?<a href
+                            routerLink="/register">Register</a></p>
+                </div>
+            </form>
+        </div>
     </div>
 </div>

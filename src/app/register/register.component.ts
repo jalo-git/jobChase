@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -12,10 +14,13 @@ export class RegisterComponent implements OnInit {
 
   user: any = FormGroup;
   submitted = false;
+ 
+  mydata: any;
 
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private http: HttpClient
   ) { }
 
   ngOnInit(): void {
@@ -51,15 +56,34 @@ export class RegisterComponent implements OnInit {
     }
 
   }
-  spinner = true;
+
+  url = "http://127.0.0.1:8000/api/register";
+  // spinner = true;
   onSubmit() {
     this.submitted = true;
     //stop here if form is invalid
 
-    this.spinner = false;
+    // this.spinner = false;
     if (this.user.invalid) {
       return;
     }
-  }
+    console.warn(this.user.value);
+    this.http.post(this.url, this.user.value).subscribe((data: any)=> {
+    this.mydata = data;
 
+    Swal.fire({
+      text: 'You Register Successfully!',
+      icon: 'success'
+    });
+
+    console.log(data);
+    this.router.navigate(['/login'])
+    }
+    , (errors: { error: { errors: any; }; })=>{
+      // alert("Username is already existing!");
+      Swal.fire('Oops...', 'Something went wrong!', 'error')
+      console.log(errors.error.errors);
+    });
+  }
 }
+  

@@ -1,52 +1,53 @@
 .side-navbar {
-    width: 290px;
-    height: 100%;
-    position: fixed;
-    margin-left: -300px;
-    background-color: rgba(10, 28, 129, 0.89);
-    transition: 0.5s;
-    color:white;
-  }
-  
-  .nav-link:active,
-  .nav-link:focus,
-  .nav-link:hover {
-    background-color: #ffffff26;
-    color:white;
-  }
-  
-  .my-container {
-    transition: 0.4s;
-  }
-  
-  .active-nav {
-    margin-left: 0;
-  }
-  
-  /* for main section */
-  .active-cont {
-    margin-left: 180px;
-  }
-  
-  #menu-btn {
-    background-color: #100901;
-    color: #fff;
-    margin-left: -62px;
-  }
-  #icon{
-    font-size: 100px;
-    text-align: center;
+  width: 290px;
+  height: 100%;
+  position: fixed;
+  margin-left: -300px;
+  background-color: rgba(10, 28, 129, 0.89);
+  transition: 0.5s;
+  color:white;
+ 
+}
 
-  }
-  #faUser{
-    color:white;
-    font-size: 25px;
-  }
-  #logout{
-    margin-left:93%;
-    color: white;
-  }
-  .mx-2{
-    color: white;
-    text-align: center;
-  }
+.nav-link:active,
+.nav-link:focus,
+.nav-link:hover {
+  background-color: #ffffff26;
+  color:white;
+}
+
+.my-container {
+  transition: 0.4s;
+}
+
+.active-nav {
+  margin-left: 0;
+}
+
+/* for main section */
+.active-cont {
+  margin-left: 180px;
+}
+
+#menu-btn {
+  background-color: #100901;
+  color: #fff;
+  margin-left: -62px;
+}
+#icon{
+  font-size: 100px;
+  text-align: center;
+
+}
+#faUser{
+  color:white;
+  font-size: 25px;
+}
+#logout{
+  margin-left:93%;
+  color: white;
+}
+.mx-2{
+  color: white;
+  text-align: center;
+}

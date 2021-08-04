@@ -1,0 +1,12 @@
+.card-display{
+    font-size:50px;
+    text-align: center;
+    width: 59rem; 
+    margin-top:10%; 
+    margin-left: 28%;
+    color: rgb(109, 5, 109);;
+    border-right: skyblue solid 4px;
+    border-left: violet solid 4px; 
+    border-top: white;
+    border-bottom: white;
+  }

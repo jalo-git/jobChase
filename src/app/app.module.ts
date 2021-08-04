@@ -15,6 +15,12 @@ import { CreateJobsComponent } from './admin/create-jobs/create-jobs.component';
 import { ApplicantsComponent } from './admin/applicants/applicants.component';
 import { JobsAdminComponent } from './admin/jobs-admin/jobs-admin.component';
 
+import { HttpClientModule } from '@angular/common/http';
+import { UserDisplayComponent } from './users/user-display/user-display.component';
+import { AdminDisplayComponent } from './admin/admin-display/admin-display.component';
+import { ResumeComponent } from './users/resume/resume.component';
+import { UserHomeComponent } from './users/user-home/user-home.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,11 +34,17 @@ import { JobsAdminComponent } from './admin/jobs-admin/jobs-admin.component';
     CreateJobsComponent,
     ApplicantsComponent,
     JobsAdminComponent,
+    UserDisplayComponent,
+    AdminDisplayComponent,
+    ResumeComponent,
+    UserHomeComponent,
+   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
     
   ],
   providers: [],
