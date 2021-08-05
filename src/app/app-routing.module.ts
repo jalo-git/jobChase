@@ -4,12 +4,14 @@ import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard
 import { ApplicantsComponent } from './admin/applicants/applicants.component';
 import { CreateJobsComponent } from './admin/create-jobs/create-jobs.component';
 import { JobsAdminComponent } from './admin/jobs-admin/jobs-admin.component';
+import { UpdateJobsComponent } from './admin/update-jobs/update-jobs.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { JobsComponent } from './users/jobs/jobs.component';
 import { ResumeComponent } from './users/resume/resume.component';
 import { TermsComponent } from './users/terms/terms.component';
+import { UserHomeComponent } from './users/user-home/user-home.component';
 import { UsersDashboardComponent } from './users/users-dashboard/users-dashboard.component';
 
 const routes: Routes = [
@@ -25,6 +27,9 @@ const routes: Routes = [
   { path: 'resume', component:ResumeComponent, pathMatch: 'full'},
   { path: 'jobsAdmin', component:JobsAdminComponent, pathMatch: 'full'},
   { path: 'create-jobs', component:CreateJobsComponent, pathMatch: 'full'},
+  { path: 'update-jobs/:id', component:UpdateJobsComponent, pathMatch: 'full'},
+  { path: 'home', component:UserHomeComponent, pathMatch: 'full'},
+
 ];
 
 @NgModule({
