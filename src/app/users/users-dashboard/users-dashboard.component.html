@@ -1,6 +1,6 @@
 <nav class="navbar fixed-top navbar-primary bg-primary">
     <div class="container-fluid">
-      <p id="logout">Logout &nbsp;&nbsp;<i class="fas fa-user" id="faUser"></i></p>
+      <p id="logout">Logout &nbsp;&nbsp;<i class="fas fa-user" id="faUser" routerLink = "/landing-page"></i></p>
       
     </div>
   </nav><br>
@@ -11,6 +11,13 @@
       <h3 style="text-align: center; padding-top: 38%;">Welcome Home</h3> <br>
       <i class="fas fa-user-circle" id="icon" ></i><br><br>
 
+      <!-- <li [class.active]="isActive(['home'])">
+        <a [routerLink]="['home']">Home</a>
+    </li> -->
+
+      <li href="#" class="nav-link-active" routerLink="/home">
+        <span class="mx-2"><i class="fas fa-briefcase" ></i>&nbsp;  Home</span>
+      </li>
       <li href="#" class="nav-link" routerLink="/jobs">
         <span class="mx-2"><i class="fas fa-briefcase" ></i>&nbsp;  Jobs</span>
       </li>

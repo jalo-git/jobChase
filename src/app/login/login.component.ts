@@ -77,9 +77,17 @@ export class LoginComponent implements OnInit {
       icon: 'success'
     });
 
-    console.log(data);
+    console.log(this.mydata.logincredential.usertype);
+
+    if(this.mydata.logincredential.usertype === "admin"){
+      this.router.navigate(['/admin']);
+    }
+
+    if(this.mydata.logincredential.usertype === "customer"){
+      this.router.navigate(['/user']);
+    }
     
-    this.router.navigate(['/user'])
+    
     }
     , (errors: { error: { errors: any; }; })=>{
       // alert("Username is already existing!");

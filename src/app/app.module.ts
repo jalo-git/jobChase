@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +20,15 @@ import { UserDisplayComponent } from './users/user-display/user-display.componen
 import { AdminDisplayComponent } from './admin/admin-display/admin-display.component';
 import { ResumeComponent } from './users/resume/resume.component';
 import { UserHomeComponent } from './users/user-home/user-home.component';
+import { RouterModule, Routes } from '@angular/router';
+import { UpdateJobsComponent } from './admin/update-jobs/update-jobs.component';
+
+
+const appRoutes: Routes = [
+ { path: '', component:ApplicantsComponent },
+ { path: 'update/:id', component:UpdateJobsComponent }
+];
+
 
 @NgModule({
   declarations: [
@@ -38,13 +47,16 @@ import { UserHomeComponent } from './users/user-home/user-home.component';
     AdminDisplayComponent,
     ResumeComponent,
     UserHomeComponent,
+    UpdateJobsComponent,
    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    RouterModule.forRoot(appRoutes)
     
   ],
   providers: [],

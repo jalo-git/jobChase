@@ -5,8 +5,11 @@
       <div class="col-12">
         <table class="table table-bordered" style="border-color: skyblue;">
           <thead>
-            <tr style="background-color: blue; color: white;">
-              <th style="width:40%"scope="col">Name</th>
+            <tr class="bg-primary
+            "style="color: white;">
+            <th scope="col">#</th>
+              <th scope="col">FirstName</th>
+              <th scope="col">LastName</th>
               <th scope="col">Age</th>
               <th scope="col">Gender</th>
               <th scope="col">Contact Number</th>
@@ -14,15 +17,18 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">Job chase</th>
-              <td>20</td>
-              <td>female</td>
-              <td>092764724623</td>
+            <tr *ngFor = "let appl of applicants">
+              <th scope="row">{{appl.id}}</th>
+              <td>{{appl.firstname}}</td>
+              <td>{{appl.lastname}}</td>
+              <td>{{appl.age}}</td>
+              <td>{{appl.gender}}</td>
+              <td>{{appl.number}}</td>
               <td>
                 <button type="button" class="btn btn-success">Approved</button>&nbsp;&nbsp;
               <button type="button" class="btn btn-danger">Decline</button>
               </td>
+              </tr>
           </tbody>
         </table>
       </div>
@@ -30,4 +36,4 @@
   </div>
 </div>
 
-
+<router-outlet></router-outlet>

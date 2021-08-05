@@ -1,0 +1,36 @@
+<app-admin-display></app-admin-display><br><br><br>
+<div class="form">
+    <form  >
+        <div class="card-header bg-primary " style="padding-bottom:0;">
+            <p style="color: white;"><i class="fas fa-pencil-alt"></i>&nbsp;Create Job</p>
+        </div>
+        <div class="card p-2" style="border-color: skyblue;">
+            <div class="mb-2" >
+               
+              <input type="text" name="jobName" class="form-control" [(ngModel)]="jobs.jobName">
+            </div>
+            <div class="mb-2">
+                <input type="text" name="salary" class="form-control form-control-md"  [(ngModel)]="jobs.salary">
+
+            </div>
+            <div class="mb-2"  >
+             
+                <input type="text" name="option" class="form-control form-control-md"  [(ngModel)]="jobs.option">
+            </div>
+            <div class="mb-2">
+                <input type="text" name="image" class="form-control form-control-md"   [(ngModel)]="jobs.image">
+
+            </div>
+            <div class="mb-2">
+                <textarea name="description" class="form-control" aria-label="With textarea"   [(ngModel)]="jobs.description"></textarea>
+
+
+            </div>
+            <div class="d-flex">
+                <button class="btn btn-success w-23" >Update </button>&nbsp;
+              </div>
+
+
+        </div>
+    </form>
+</div>

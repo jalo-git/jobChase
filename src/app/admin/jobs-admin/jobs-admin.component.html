@@ -1,25 +1,35 @@
 <app-admin-display></app-admin-display><br><br><br>
-<div class="card p-2"
-    style="width: 18rem;  margin-left: 22%; box-shadow: 0 4px 8px 0 rgba(10, 85, 224, 0.2), 0 6px 20px 0 rgba(10, 105, 247, 0.19);">
-    <div class="card-header rounded"
-      style="background-color: rgb(138, 190, 138); color: white; width: 270px;  ">
-      <h5 class=" pt-1" style="color:white; font-size: 15px; text-align: center;">Urgent Hiring</h5>
 
-    </div>
-    <br>
-
-    <img src=" https://bit.ly/2WUbhZV" class="mx-auto d-block w-50" alt="...">
-    <div class="card-body">
-      <h4 class="card-title ">Security Guard</h4>
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">Salary</li>
-      <li class="list-group-item">1,500</li>
-      <li class="list-group-item">jdfgdgd</li>
-    </ul>
-    <div class="card-body">
-      <div class="d-flex">
-        <button class="btn btn-success w-15" style="width: 100px;" routerLink="/resume">Update</button> &nbsp;&nbsp;&nbsp;
-        <button class="btn btn-danger w-15" style="width: 100px;" routerLink="/resume">Remove</button>
+<div class="row offset-3">
+  <div class="col mt-5" *ngFor="let job of jobs">
+    <div class=" card p-2"
+      style="width: 18rem; box-shadow: 0 4px 8px 0 rgba(10, 85, 224, 0.2), 0 6px 20px 0 rgba(10, 105, 247, 0.19);">
+      <div class="card-header rounded" style="background-color: rgb(138, 190, 138); color: white; width: 270px;  ">
+        <h5 class=" pt-1" style="color:white; font-size: 15px; text-align: center;">Urgent Hiring</h5>
+      </div>
+      <br>
+      <img src=" https://bit.ly/2WUbhZV" class="mx-auto d-block w-50" alt="...">
+      <div class="card-body">
+        <h4 class="card-title ">{{job.jobName}}</h4>
+        <h4 class="card-title " hidden>{{job.id}}</h4>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Salary</li>
+        <li class="list-group-item">1,500</li>
+        <li class="list-group-item">jdfgdgd</li>
+      </ul>
+      <div class="card-body">
+        <div class="d-flex">
+          <button class="btn btn-success w-15" style="width: 100px;" routerLink="/update-jobs/{{ job.id }}">Update</button>
+          &nbsp;&nbsp;&nbsp;
+          <button class="btn btn-danger w-15" style="width: 100px;" (click)="delete(job.id)">Remove</button>
+        </div>
       </div>
     </div>
+  </div>
+</div>
+
+
+
+
+<router-outlet></router-outlet>
