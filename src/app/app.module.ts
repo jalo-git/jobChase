@@ -22,6 +22,7 @@ import { ResumeComponent } from './users/resume/resume.component';
 import { UserHomeComponent } from './users/user-home/user-home.component';
 import { RouterModule, Routes } from '@angular/router';
 import { UpdateJobsComponent } from './admin/update-jobs/update-jobs.component';
+import { HomeAdminComponent } from './admin/home-admin/home-admin.component';
 
 
 const appRoutes: Routes = [
@@ -48,6 +49,7 @@ const appRoutes: Routes = [
     ResumeComponent,
     UserHomeComponent,
     UpdateJobsComponent,
+    HomeAdminComponent,
    
   ],
   imports: [

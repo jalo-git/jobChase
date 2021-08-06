@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-
-import { ActivatedRoute } from '@angular/router';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { Component, OnInit } from '@angular/core'; 
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from 'src/app/service/data.service';
 import { JobsAdminComponent } from '../jobs-admin/jobs-admin.component';
-
+import Swal from 'sweetalert2';
+import { empty } from 'rxjs';
 @Component({
   selector: 'app-update-jobs',
   templateUrl: './update-jobs.component.html',
@@ -13,26 +14,32 @@ export class UpdateJobsComponent implements OnInit {
 jobs:any;
 data: any;
 id: any;
-  constructor(private route:ActivatedRoute, private dataService: DataService) { }
+  constructor(private route:ActivatedRoute, private dataService: DataService, private router:Router) { }
 
   ngOnInit(): void {
     console.log(this.route.snapshot.params.id);
     this.getData();
+    this.updateJob();
+  
   }
   getData(){
    
-    this.dataService.getJobById(this.route.snapshot.params.id).subscribe(res => {
-      // console.log(res);
+    this.dataService.getUpdateJobById(this.route.snapshot.params.id).subscribe(res => {
+      console.log(res);
       this.data = res;
       this.jobs = this.data;
     });
   }
-  // update(){
+  updateJob(){
     
-  //   this.dataService.updateJob(this.route.snapshot.params.id).subscribe(res => {
-  //   console.log(res);
+    this.dataService.getUpdateJob(this.route.snapshot.params.id, this.jobs).subscribe(res => {
+    // console.log(res);
+    // if(res != empty){
+    //   this.router.navigate(['/jobsAdmin']);
+    // }
     
-  //   })
-  // }
+  })
 
+
+  }
 }

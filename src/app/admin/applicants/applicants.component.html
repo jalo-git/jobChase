@@ -12,21 +12,24 @@
               <th scope="col">LastName</th>
               <th scope="col">Age</th>
               <th scope="col">Gender</th>
+              <th scope="col">Applied For</th>
               <th scope="col">Contact Number</th>
               <th scope="col">Status</th>
             </tr>
           </thead>
-          <tbody>
-            <tr *ngFor = "let appl of applicants">
-              <th scope="row">{{appl.id}}</th>
-              <td>{{appl.firstname}}</td>
-              <td>{{appl.lastname}}</td>
-              <td>{{appl.age}}</td>
-              <td>{{appl.gender}}</td>
-              <td>{{appl.number}}</td>
+          <tbody *ngFor="let applicant of applicants">
+            <tr>
+              <th>{{applicant.id}}</th>
+              <td>{{applicant.firstname}}</td>
+              <td>{{applicant.lastname}}</td>
+              <td>{{applicant.age}}</td>
+              <td>{{applicant.gender}}</td>
+              <td>{{applicant.job.jobName}}</td>
+              <td>{{applicant.number}}</td>
               <td>
-                <button type="button" class="btn btn-success">Approved</button>&nbsp;&nbsp;
-              <button type="button" class="btn btn-danger">Decline</button>
+                <button type="submit" class="btn btn-success" (click)="delete(applicant.id)" >Remove</button>
+                <!-- <button type="button" class="btn btn-success" >Approved</button>&nbsp;&nbsp;
+                <button type="button" class="btn btn-danger">Decline</button> -->
               </td>
               </tr>
           </tbody>

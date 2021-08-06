@@ -47,19 +47,20 @@ export class ResumeComponent implements OnInit {
     // }
     );
   }
- 
-  url = "http://127.0.0.1:8000/api/resume/create";
+  
+  currentUser = window.localStorage.getItem("user-id");
+
  
   onSubmit() {
     console.log(this.user.value);
     this.submitted = true;
    
-    this.http.post(this.url, this.user.value).subscribe((data: any)=> {
+    this.http.post(`http://127.0.0.1:8000/api/resume/create/${this.currentUser}/${this}`, this.user.value).subscribe((data: any)=> {
     console.log(data);
     this.mydata = this.user;
-  
+    
     Swal.fire({
-      text: 'You Register Successfully!',
+      text: 'Submitted Successfully!',
       icon: 'success'
     });
     },

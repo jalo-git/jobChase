@@ -21,8 +21,10 @@ export class DataService {
   getJobById(id: string){
     return this.httpClient.get('http://127.0.0.1:8000/api/update/'+id);
   }
-  updateJob(id: string){
+  getUpdateJobById(id: string){
     return this.httpClient.get('http://127.0.0.1:8000/api/update/'+id);
   }
-  
+  getUpdateJob(id: string,data: string){
+    return this.httpClient.put(`http://127.0.0.1:8000/api/updated/${id}}`,data);
+  }
 }

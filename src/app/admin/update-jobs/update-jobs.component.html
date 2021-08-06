@@ -1,5 +1,5 @@
 <app-admin-display></app-admin-display><br><br><br>
-<div class="form">
+<div class="form" >
     <form  >
         <div class="card-header bg-primary " style="padding-bottom:0;">
             <p style="color: white;"><i class="fas fa-pencil-alt"></i>&nbsp;Create Job</p>
@@ -7,7 +7,7 @@
         <div class="card p-2" style="border-color: skyblue;">
             <div class="mb-2" >
                
-              <input type="text" name="jobName" class="form-control" [(ngModel)]="jobs.jobName">
+              <input type="text" name="jobName" class="form-control form-control-md" [(ngModel)]="jobs.jobName">
             </div>
             <div class="mb-2">
                 <input type="text" name="salary" class="form-control form-control-md"  [(ngModel)]="jobs.salary">
@@ -27,7 +27,7 @@
 
             </div>
             <div class="d-flex">
-                <button class="btn btn-success w-23" >Update </button>&nbsp;
+                <button class="btn btn-success w-23" (click)="updateJob()" routerLink="/jobsAdmin">Update </button>&nbsp;
               </div>
 
 

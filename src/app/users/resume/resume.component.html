@@ -45,7 +45,7 @@
                     </select>
                 </div>
                 <div class="col">
-                    <input type="text" class="form-control" formControlName="contactNumber"
+                    <input type="number" class="form-control" formControlName="contactNumber"
                     [ngClass]="{'is-invalid' : user.get('contactNumber').touched && user.get('contactNumber').invalid}"  placeholder="Contact Number">
                     <div *ngIf="user.get('contactNumber').touched && user.get('contactNumber').invalid" class="invalid-feedback">
                         <p class="validate" *ngIf="user.get('contactNumber').errors.required">Contact is required</p>
@@ -120,7 +120,7 @@
                   </div>
             </div>
             <div class="mb-4">
-                <input type="number" class="form-control form-control-md"formControlName="number"
+                <input type="number" class="form-control form-control-md" formControlName="number"
                 [ngClass]="{'is-invalid' : user.get('number').touched && user.get('number').invalid}" placeholder="Contact Number">
                 <div *ngIf="user.get('number').touched && user.get('number').invalid" class="invalid-feedback">
                     <p class="validate" *ngIf="user.get('number').errors.required">Contact is required</p>

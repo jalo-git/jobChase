@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import { ApplicantsComponent } from './admin/applicants/applicants.component';
 import { CreateJobsComponent } from './admin/create-jobs/create-jobs.component';
+import { HomeAdminComponent } from './admin/home-admin/home-admin.component';
 import { JobsAdminComponent } from './admin/jobs-admin/jobs-admin.component';
 import { UpdateJobsComponent } from './admin/update-jobs/update-jobs.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
@@ -19,16 +20,18 @@ const routes: Routes = [
   { path: 'landing-page', component:LandingPageComponent, pathMatch: 'full'},
   { path: 'register', component:RegisterComponent, pathMatch: 'full'},
   { path: 'login', component:LoginComponent, pathMatch: 'full'},
-  { path: 'user', component:UsersDashboardComponent, pathMatch: 'full'},
+  // { path: 'user', component:UsersDashboardComponent, pathMatch: 'full'},
   { path: 'jobs', component:JobsComponent, pathMatch: 'full'},
   { path: 'terms', component:TermsComponent, pathMatch: 'full'},
-  { path: 'admin', component:AdminDashboardComponent, pathMatch: 'full'},
+  // { path: 'admin', component:AdminDashboardComponent, pathMatch: 'full'},
   { path: 'applicants', component:ApplicantsComponent, pathMatch: 'full'},
   { path: 'resume', component:ResumeComponent, pathMatch: 'full'},
   { path: 'jobsAdmin', component:JobsAdminComponent, pathMatch: 'full'},
   { path: 'create-jobs', component:CreateJobsComponent, pathMatch: 'full'},
   { path: 'update-jobs/:id', component:UpdateJobsComponent, pathMatch: 'full'},
-  { path: 'home', component:UserHomeComponent, pathMatch: 'full'},
+  { path: 'user-home', component:UserHomeComponent, pathMatch: 'full'},
+  { path: 'home-admin', component:HomeAdminComponent, pathMatch: 'full'},
+
 
 ];
 

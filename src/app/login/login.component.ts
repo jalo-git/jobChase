@@ -78,16 +78,21 @@ export class LoginComponent implements OnInit {
     });
 
     console.log(this.mydata.logincredential.usertype);
+    console.log( "My token", data.token);
+    
 
     if(this.mydata.logincredential.usertype === "admin"){
-      this.router.navigate(['/admin']);
+      this.router.navigate(['/home-admin']);
     }
 
     if(this.mydata.logincredential.usertype === "customer"){
-      this.router.navigate(['/user']);
+      this.router.navigate(['/user-home']);
     }
-    
-    
+    const token = data.token;
+    window.localStorage.setItem("Authorization", token);
+
+    const imUser = data.logincredential.id;
+    window.localStorage.setItem("user-id", imUser);
     }
     , (errors: { error: { errors: any; }; })=>{
       // alert("Username is already existing!");

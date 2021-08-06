@@ -8,15 +8,15 @@
         <h5 class=" pt-1" style="color:white; font-size: 15px; text-align: center;">Urgent Hiring</h5>
       </div>
       <br>
-      <img src=" https://bit.ly/2WUbhZV" class="mx-auto d-block w-50" alt="...">
+      <img src="{{ job.image }}" class="mx-auto d-block w-50" alt="...">
       <div class="card-body">
         <h4 class="card-title ">{{job.jobName}}</h4>
         <h4 class="card-title " hidden>{{job.id}}</h4>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">Salary</li>
-        <li class="list-group-item">1,500</li>
-        <li class="list-group-item">jdfgdgd</li>
+        <li class="list-group-item">{{job.salary}}</li>
+        <li class="list-group-item">{{job.description}}</li>
+        <!-- <li class="list-group-item">jdfgdgd</li> -->
       </ul>
       <div class="card-body">
         <div class="d-flex">

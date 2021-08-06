@@ -1,51 +1,184 @@
 <app-user-display></app-user-display><br><br><br>
-  <!-- <div class="card p-2"
-    style="width: 18rem;  margin-left: 22%; box-shadow: 0 4px 8px 0 rgba(10, 85, 224, 0.2), 0 6px 20px 0 rgba(10, 105, 247, 0.19);">
-    <div class="card-header rounded"
-      style="padding-bottom:0; background-color: rgb(138, 190, 138); color: white; width: 270px;  ">
-      <h5 class="pt-1" style="color:white; font-size: 15px; text-align: center;">Urgent Hiring</h5>
 
-    </div>
-<br>
-    <img src=" https://bit.ly/2WUbhZV" class="mx-auto d-block w-50" alt="...">
-    <div class="card-body">
-      <h4 class="card-title ">Security Guard</h4>
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">Salary</li>
-      <li class="list-group-item">1,500</li>
-      <li class="list-group-item">jdfgdgd</li>
-    </ul>
-    <div class="card-body">
-      <div class="d-flex">
-        <button class="btn btn-primary w-15" style="width: 100px;" routerLink="/resume">Apply</button>
-      </div>
-    </div> -->
-
-    <div class="row offset-3">
-      <div class="col mt-5" *ngFor="let job of jobs">
-        <div class=" card p-2"
-          style="width: 18rem; box-shadow: 0 4px 8px 0 rgba(10, 85, 224, 0.2), 0 6px 20px 0 rgba(10, 105, 247, 0.19);">
-          <div class="card-header rounded" style="background-color: rgb(138, 190, 138); color: white; width: 270px;  ">
-            <h5 class=" pt-1" style="color:white; font-size: 15px; text-align: center;">Urgent Hiring</h5>
-          </div>
-          <br>
-          <img src=" https://bit.ly/2WUbhZV" class="mx-auto d-block w-50" alt="...">
-          <div class="card-body">
-            <h4 class="card-title ">{{job.jobName}}</h4>
-            <h4 class="card-title " hidden>{{job.id}}</h4>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Salary</li>
-            <li class="list-group-item">1,500</li>
-            <li class="list-group-item">jdfgdgd</li>
-          </ul>
-          <div class="card-body">
-            <div class="d-flex">
-              <button class="btn btn-primary w-15" style="width: 100px;" routerLink="/resume">Apply</button>
-            </div>
+<div *ngIf="!onDisplayResume">
+  <div class="row offset-3">
+    <div class="col mt-5" *ngFor="let job of jobs">
+      <div class=" card p-2"
+        style="width: 18rem; box-shadow: 0 4px 8px 0 rgba(10, 85, 224, 0.2), 0 6px 20px 0 rgba(10, 105, 247, 0.19);">
+        <div class="card-header rounded" style="background-color: rgb(138, 190, 138); color: white; width: 270px;  ">
+          <h5 class=" pt-1" style="color:white; font-size: 15px; text-align: center;">Urgent Hiring</h5>
+        </div>
+        <br>
+        <img src="{{ job.image }}" class="mx-auto d-block w-50" alt="...">
+        <div class="card-body">
+          <h4 class="card-title ">{{job.jobName}}</h4>
+          <h4 class="card-title " hidden>{{job.id}}</h4>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">{{job.salary}}</li>
+        <li class="list-group-item">{{job.description}}</li>
+        </ul>
+        <div class="card-body">
+          <div class="d-flex">
+            <button class="btn btn-primary w-15" style="width: 100px;" (click)="applyJob(job.id)">Apply</button>
           </div>
         </div>
       </div>
     </div>
-    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<div *ngIf="onDisplayResume">
+  <div class="form">
+
+    <form (ngSubmit)="user.valid && onSubmit()" [formGroup]="user" class="resume-form" id="resume-form">
+      <div class="card-header bg-primary " style="padding-bottom:0;">
+        <p style="color: white; font-size: 20px;"><i class="fas fa-user-tie"></i>&nbsp;&nbsp;Create Resume</p>
+      </div>
+      <div class="card p-3" style="border-color: skyblue;">
+        <div class="card-header mb-2"
+          style="padding-bottom:0px; background-color: skyblue; width: 250px; height: 40PX;">
+          <p style="color: white; font-size: 20px;"><i class="fas fa-pencil-alt"></i>&nbsp;Personal Information
+          </p>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col">
+            <input type="text" id="fname" name="fname" class="form-control" formControlName="firstname"
+              [ngClass]="{'is-invalid' : user.get('firstname').touched && user.get('firstname').invalid}"
+              placeholder="First Name">
+            <div *ngIf="user.get('firstname').touched && user.get('firstname').invalid" class="invalid-feedback">
+              <p class="validate" *ngIf="user.get('firstname').errors.required">*First Name is required</p>
+              <p class="validate" *ngIf="user.get('firstname').errors.minlength">*First Name must atleast 2 characters
+              </p>
+            </div>
+          </div>
+          <div class="col">
+            <input type="text" id="lname" name="lname" class="form-control" formControlName="lastname"
+              [ngClass]="{'is-invalid' : user.get('lastname').touched && user.get('lastname').invalid}"
+              placeholder="Last Name">
+            <div *ngIf="user.get('lastname').touched && user.get('lastname').invalid" class="invalid-feedback">
+              <p class="validate" *ngIf="user.get('lastname').errors.required">Last Name is required</p>
+              <p class="validate" *ngIf="user.get('lastname').errors.minlength">Last Name must be atleast 2 characters
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class=" row mb-4">
+          <div class="col">
+            <input type="number" formControlName="age" placeholder="Age" class="form-control form-control-md">
+          </div>
+          <div class="col">
+            <select class="form-control form-control-md" formControlName="gender">
+              <option>Male</option>
+              <option>Female</option>
+            </select>
+          </div>
+          <div class="col">
+            <input type="number" class="form-control" formControlName="contactNumber"
+              [ngClass]="{'is-invalid' : user.get('contactNumber').touched && user.get('contactNumber').invalid}"
+              placeholder="Contact Number">
+            <div *ngIf="user.get('contactNumber').touched && user.get('contactNumber').invalid"
+              class="invalid-feedback">
+              <p class="validate" *ngIf="user.get('contactNumber').errors.required">Contact is required</p>
+              <p class="validate" *ngIf="user.get('contactNumber').errors.minlength">Contact must be atleast 11
+                characters
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="card-header mb-2"
+          style="padding-bottom:0px; background-color: skyblue; width: 250px; height: 40PX;">
+          <p style="color: white; font-size: 20px;"><i class="fas fa-user-graduate"></i>&nbsp;Education</p>
+        </div>
+
+        <div class="mb-4">
+          <input type="text" class="form-control form-control-md" formControlName="education"
+            [ngClass]="{'is-invalid' : user.get('education').touched && user.get('education').invalid}"
+            placeholder="Highest Educational Attainment">
+          <div *ngIf="user.get('education').touched && user.get('education').invalid" class="invalid-feedback">
+            <p class="validate" *ngIf="user.get('education').errors.required">Highest Educational Attainment is required
+            </p>
+            <p class="validate" *ngIf="user.get('education').errors.minlength">Highest Educational Attainment must be
+              atleast 5 characters</p>
+          </div>
+        </div>
+
+        <div class="card-header mb-2"
+          style="padding-bottom:0px; background-color: skyblue; width: 250px; height: 40PX;">
+          <p style="color: white; font-size: 20px;"><i class="fas fa-user-md"></i>&nbsp;Work Experience</p>
+        </div>
+        <div class="mb-2">
+          <input type="text" class="form-control form-control-md" formControlName="previousJob"
+            [ngClass]="{'is-invalid' : user.get('previousJob').touched && user.get('previousJob').invalid}"
+            placeholder="Previous Job">
+          <div *ngIf="user.get('previousJob').touched && user.get('previousJob').invalid" class="invalid-feedback">
+            <p class="validate" *ngIf="user.get('previousJob').errors.required">Previous Job is required</p>
+            <p class="validate" *ngIf="user.get('previousJob').errors.minlength">Previous Job must be atleast 5
+              characters
+            </p>
+          </div>
+        </div>
+        <div class="mb-4">
+          <input type="text" class="form-control form-control-md" formControlName="company"
+            [ngClass]="{'is-invalid' : user.get('company').touched && user.get('company').invalid}"
+            placeholder="Company Name">
+          <div *ngIf="user.get('company').touched && user.get('company').invalid" class="invalid-feedback">
+            <p class="validate" *ngIf="user.get('company').errors.required">Company Name is required</p>
+            <p class="validate" *ngIf="user.get('company').errors.minlength">Company Name must be atleast 5 characters
+            </p>
+          </div>
+        </div>
+
+        <div class="card-header mb-2"
+          style="padding-bottom:0px; background-color: skyblue; width: 250px; height: 40PX;">
+          <p style="color: white; font-size: 20px;"><i class="fas fa-pencil-alt"></i>&nbsp;Skills</p>
+
+        </div>
+
+        <div class="mb-4">
+          <textarea class="form-control" aria-label="With textarea" formControlName="skills"
+            [ngClass]="{'is-invalid' : user.get('skills').touched && user.get('skills').invalid}"
+            placeholder="State here..." style="height:100px;"></textarea>
+          <div *ngIf="user.get('skills').touched && user.get('skills').invalid" class="invalid-feedback">
+            <p class="validate" *ngIf="user.get('skills').errors.required">Skills is required</p>
+            <p class="validate" *ngIf="user.get('skills').errors.minlength">Skills must be atleast 5 characters</p>
+          </div>
+        </div>
+
+
+        <div class="card-header mb-2"
+          style="padding-bottom:0px; background-color: skyblue; width: 250px; height: 40PX;">
+          <p style="color: white; font-size: 20px;"><i class="fas fa-pencil-alt"></i>&nbsp;Reference</p>
+        </div>
+        <div class="mb-2">
+          <input type="text" class="form-control form-control-md" formControlName="reference"
+            [ngClass]="{'is-invalid' : user.get('reference').touched && user.get('reference').invalid}"
+            placeholder="Name">
+          <div *ngIf="user.get('reference').touched && user.get('reference').invalid" class="invalid-feedback">
+            <p class="validate" *ngIf="user.get('reference').errors.required">Name is required</p>
+            <p class="validate" *ngIf="user.get('reference').errors.minlength">Name must be atleast 2 characters</p>
+          </div>
+        </div>
+        <div class="mb-4">
+          <input type="number" class="form-control form-control-md" formControlName="number"
+            [ngClass]="{'is-invalid' : user.get('number').touched && user.get('number').invalid}"
+            placeholder="Contact Number">
+          <div *ngIf="user.get('number').touched && user.get('number').invalid" class="invalid-feedback">
+            <p class="validate" *ngIf="user.get('number').errors.required">Contact is required</p>
+            <p class="validate" *ngIf="user.get('number').errors.minlength">Contact must be atleast 11 characters</p>
+          </div>
+        </div>
+
+        <div class="d-flex">
+          <button type="submit" class="btn btn-success w-23" style="width: 200px; margin-left: 20px;">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<router-outlet></router-outlet>
